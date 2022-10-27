@@ -1,0 +1,102 @@
+﻿<ResourceDictionary
+    x:Class="BindingStatement.Templates_Resources.TestResourceDictionary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:templatesResources="using:BindingStatement.Templates_Resources"
+    xmlns:test="using:BindingStatement.Model">
+    <!--<DataTemplate x:DataType="test:PersonDataModel" x:Key="StudentViewModel">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{x:Bind RollNo ,Mode=TwoWay}" Style="{StaticResource  SubheaderTextBlockStyle}"/>
+            <TextBox Text="{x:Bind Name ,Mode=TwoWay}"  ></TextBox>
+
+        </StackPanel>
+    </DataTemplate>-->
+    <DataTemplate x:Key="BlogPostResourceDictionaryDataTemplate" x:DataType="test:BlogPostDataModel">
+        <Grid
+            Height="auto"
+            MaxWidth="750"
+            VerticalAlignment="Stretch"
+            Background="White"
+            CornerRadius="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <RelativePanel Grid.Row="0">
+                <TextBlock
+                    Name="BlogPostCreaterNameTextBlock"
+                    Margin="20,5,0,0"
+                    FontWeight="Bold"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Text="{x:Bind Person.Name}"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Name="BlogPostCreatedDateTextBlog"
+                    Margin="0,5,100,0"
+                    RelativePanel.AlignRightWithPanel="True"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="{x:Bind DateOfCreation}" />
+
+
+            </RelativePanel>
+            <RelativePanel Grid.Row="1">
+                <StackPanel
+                    Name="BlogContentStackPannel"
+                    Margin="10,0,0,0"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True">
+
+                    <TextBlock
+                        x:Name="BlogHeadingTextBlock"
+                        Margin="10,0,0,0"
+                        FontWeight="Normal"
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="{x:Bind BlogTopic}"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        Name="BlogpostContentTextBlock"
+                        Margin="20,5,0,0"
+                        Text="{x:Bind BlogContent}"
+                        TextWrapping="Wrap" />
+
+
+                </StackPanel>
+
+                <Button
+                    Name="UpvoteButton"
+                    Margin="20,0,0,5"
+                    Background="White"
+                    Content="&#xE19F;"
+                    FontFamily="Segoe MDl2 Assets"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.Below="BlogContentStackPannel" />
+                <TextBlock
+                    Name="UpvoteCountTextBlock"
+                    Margin="0,0,0,9"
+                    RelativePanel.AlignVerticalCenterWith="UpvoteButton"
+                    RelativePanel.RightOf="UpvoteButton"
+                    Text="{x:Bind UpVoteCount}" />
+                <Button
+                    Name="DownVoteButton"
+                    Margin="20,0,0,5"
+                    Background="White"
+                    CommandParameter="uniqueId"
+                    Content="&#xE19E;"
+                    FontFamily="Segoe MDl2 Assets"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.Below="BlogContentStackPannel"
+                    RelativePanel.RightOf="UpvoteCountTextBlock" />
+                <TextBlock
+                    Margin="0,0,0,9"
+                    RelativePanel.AlignVerticalCenterWith="UpvoteButton"
+                    RelativePanel.RightOf="DownVoteButton"
+                    Text="{x:Bind DownVoteCount}" />
+
+
+            </RelativePanel>
+
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

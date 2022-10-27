@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="BindingStatement.DataTemplate2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="DataTemplates " FontSize="40" />
+            <TextBlock Text="SimpleDataTemplates" FontSize="20" />
+            <TextBlock Text="More Complex Example" FontSize="20" />
+            <TextBlock Text="Data Types" FontSize="20" />
+            <TextBlock Text="Enums" FontSize="20" />
+            <TextBlock Text="Triggers" FontSize="20" />
+
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <ContentControl Content="HELLO">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Width="150"
+                                     Foreground="Blue" />
+                            <TextBlock FontSize="20">@gmail.com</TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+            <CheckBox Height="auto" VerticalContentAlignment="Center">
+                <CheckBox.ContentTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Height="80" Width="80">
+                                <Border BorderBrush="Orange"
+                                        Height="15"
+                                        Width="50"
+                                        BorderThickness="1"
+                                        CornerRadius="100 100 0 0" />
+                                <TextBlock
+                                    HorizontalAlignment="Center" FontSize="14" >
+                                    BURGER
+                                </TextBlock>
+                                <Border BorderBrush="Orange"
+                                        Height="15"
+                                        Width="50"
+                                        BorderThickness="1"
+                                        CornerRadius="0 0 100 100" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </CheckBox.ContentTemplate>
+            </CheckBox>
+            <Button Width="255">
+                <Button.Resources>
+
+                </Button.Resources>
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Background="Blue">
+                            <TextBlock Text="Some num" FontSize="15" />
+                            <TextBlock Text="/some item" FontSize="15" />
+
+                            <!--Data Templates are used inside a content control i.e any control with a content Property 
+                            Must have a property that takes data templates 
+                            A DataTemplate object is used as the value for these properties:
+
+                ItemsControl.ItemTemplate (which is inherited by various items controls such as ListView, GridView, ListBox)
+                            
+                ContentControl.ContentTemplate (which is inherited by various content controls such as Button, Frame, SettingsFlyout)
+                            
+                HeaderTemplate and FooterTemplate properties of various items control classes
+                            
+                ItemsPresenter.HeaderTemplate and ItemsPresenter.FooterTemplate
+                            
+                HeaderTemplate and FooterTemplate properties of text controls such as RichEditBox, TextBox
+                            
+                HeaderTemplate property of controls such as ComboBox, DatePicker, Hub, HubSection, Pivot, Slider, TimePicker, ToggleSwitch; some of these also have FooterTemplate-->
+
+
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

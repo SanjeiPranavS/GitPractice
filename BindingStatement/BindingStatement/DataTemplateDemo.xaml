@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="BindingStatement.DataTemplateDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:BindingStatement.Model"
+    xmlns:local="using:BindingStatement"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:template="using:BindingStatement.Templates_Resources"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:datatemplate="using:BindingStatement.ExtensionMethods"
+    xmlns:templateSelector="using:BindingStatement.TemplateSelector"
+    xmlns:customControls="using:BindingStatement.Templates_Resources"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="BlogPostTemplate" x:DataType="data:BlogPostDataModel" >
+                <template:MyUserControl1 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </DataTemplate>
+            <templateSelector:TemplateSelector x:Key="DefaultTemplateSelector" TestTemplate="{StaticResource BlogPostTemplate }"  />
+        </Grid.Resources>
+        <ScrollViewer>
+            <StackPanel
+                Width=" 800"
+                HorizontalAlignment="Center"
+                Orientation="Vertical">
+                <customControls:CustomClock BackGround="Red" CurrentTime="{x:Bind CurrentTime ,Mode=OneWay}" ></customControls:CustomClock>
+                <ListView
+                    CanBeScrollAnchor="True"
+                    Header="ItemTemplateTest"
+                    ItemsSource="{x:Bind local:DataTemplateDemo.ViewModel.BlogPosts}"
+                    SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False"
+                    
+                >
+                   <!--ItemTemplateSelector="{StaticResource DefaultTemplateSelector}"-->
+
+                    <ListView.ItemTemplate >
+                        <DataTemplate x:DataType="data:BlogPostDataModel">
+                            <template:MyUserControl1 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

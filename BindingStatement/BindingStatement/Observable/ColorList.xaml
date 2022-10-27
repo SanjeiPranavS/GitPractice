@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="BindingStatement.Observable.ColorList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BindingStatement.Observable"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:dataModel="using:BindingStatement.Observable"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:DataType="dataModel:ColorDescriptor" x:Key="ColorDataTemplate">
+            <StackPanel Orientation="Horizontal" >
+                <Rectangle Height="20" Width="75" >
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="{x:Bind Color}"></SolidColorBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock Text="{x:Bind Name}" FontSize="25" Margin="10 2 0 0"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <StackPanel>
+        <!--<ListBox ItemsSource="{x:Bind Logic.LotsOfColors}" 
+                 Margin="20" 
+                 Width="200"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+        <ComboBox ItemsSource="{x:Bind  Logic.LotsOfColors}" SelectedItem="{x:Bind Logic.SelectedColor,Mode=TwoWay}"
+                  Width="200"
+                  Margin="20"
+                  HorizontalAlignment="Center" 
+                  ItemTemplate="{StaticResource ColorDataTemplate}"
+                  ></ComboBox>
+        <Button Click="{x:Bind Logic.AddSelectedColorToFavorites}"
+                HorizontalAlignment="Center"
+                IsEnabled="{x:Bind Logic.IsAddFavoriteButtonEnable, Mode=OneWay}">Add Favorites</Button>
+        <ListBox ItemsSource="{x:Bind Logic.FavoriteColors,Mode=OneWay}"
+                 SelectedItem="{x:Bind Logic.SelectedFavoriteColor ,Mode=TwoWay}"
+                 ItemTemplate="{StaticResource ColorDataTemplate}"
+                 Width="200"
+                 Margin="20"></ListBox>
+        <Button Click="{x:Bind Logic.RemoveSelcetedFavoriteColor }"
+                IsEnabled="{x:Bind Logic.IsRemoveButtonEnabled,Mode=OneWay}"
+                Margin="20"
+                HorizontalAlignment="Center">Remove Favorites</Button>
+        
+    </StackPanel>
+</Page>
